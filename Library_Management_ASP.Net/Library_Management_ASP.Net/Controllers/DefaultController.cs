@@ -14,9 +14,5 @@ namespace Library_Management_ASP.Net.Controllers
             return View();
         }
 
-        public ActionResult Book()
-        {
-            return View();
-        }
     }
 }

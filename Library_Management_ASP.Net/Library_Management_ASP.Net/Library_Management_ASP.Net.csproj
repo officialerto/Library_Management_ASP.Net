@@ -139,6 +139,7 @@
     <Compile Include="Models\category.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\categoryvalidation.cs" />
     <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -234,6 +235,11 @@
     <Content Include="UpConstruction\assets\img\features-3.jpg" />
     <Content Include="UpConstruction\assets\img\features-4.jpg" />
     <Content Include="UpConstruction\assets\img\footer-bg.jpg" />
+    <Content Include="UpConstruction\assets\img\hero-carousel\11.jpg" />
+    <Content Include="UpConstruction\assets\img\hero-carousel\12.jpg" />
+    <Content Include="UpConstruction\assets\img\hero-carousel\13.jpg" />
+    <Content Include="UpConstruction\assets\img\hero-carousel\14.jpg" />
+    <Content Include="UpConstruction\assets\img\hero-carousel\15.jpg" />
     <Content Include="UpConstruction\assets\img\hero-carousel\hero-carousel-1.jpg" />
     <Content Include="UpConstruction\assets\img\hero-carousel\hero-carousel-2.jpg" />
     <Content Include="UpConstruction\assets\img\hero-carousel\hero-carousel-3.jpg" />
@@ -386,7 +392,6 @@
     <Content Include="Views\Default\Index.cshtml" />
     <Content Include="Views\Category\Create.cshtml" />
     <Content Include="Views\Category\Delete.cshtml" />
-    <Content Include="Views\Category\Details.cshtml" />
     <Content Include="Views\Category\Edit.cshtml" />
     <Content Include="Views\Category\Index.cshtml" />
   </ItemGroup>

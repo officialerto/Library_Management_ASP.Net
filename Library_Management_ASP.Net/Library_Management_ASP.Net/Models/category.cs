@@ -11,14 +11,11 @@ namespace Library_Management_ASP.Net.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
 
     public partial class category
     {
         public int id { get; set; }
-        [DisplayName("Category:")]
         public string catname { get; set; }
-        [DisplayName("Status:")]
         public string status { get; set; }
     }
 }
