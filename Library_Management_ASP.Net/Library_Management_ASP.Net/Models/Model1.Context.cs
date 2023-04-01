@@ -28,5 +28,7 @@ namespace Library_Management_ASP.Net.Models
         public virtual DbSet<author> authors { get; set; }
         public virtual DbSet<category> categories { get; set; }
         public virtual DbSet<publisher> publishers { get; set; }
+        public virtual DbSet<member> members { get; set; }
+        public virtual DbSet<book> books { get; set; }
     }
 }

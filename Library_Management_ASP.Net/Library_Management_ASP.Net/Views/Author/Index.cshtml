@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Library_Management_ASP.Net.Models.category>
+﻿@model IEnumerable<Library_Management_ASP.Net.Models.author>
 
 @{
     ViewBag.Title = "Index";
@@ -29,13 +29,12 @@
 <div class="breadcrumbs d-flex align-items-center" style="background-image: url('/UpConstruction/assets/img/hero-carousel/13.jpg');">
     <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
 
-        <h2>CATEGORY</h2>
+        <h2>AUTHOR</h2>
 
     </div>
 </div><!-- End Breadcrumbs -->
 
 <div style="box-sizing: border-box; padding: 20px; border: 1px solid #ccc; margin: 50px auto; width: calc(62% - 40px); height: calc(100% - 40px);">
-
 
     @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
     <br />
@@ -45,10 +44,13 @@
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.catname)
+                @Html.DisplayNameFor(model => model.name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.status)
+                @Html.DisplayNameFor(model => model.address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.phone)
             </th>
             <th></th>
         </tr>
@@ -57,20 +59,19 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.catname)
+                    @Html.DisplayFor(modelItem => item.name)
                 </td>
-
                 <td>
-                    @Html.DisplayFor(modelItem => item.status)
+                    @Html.DisplayFor(modelItem => item.address)
                 </td>
-
+                <td>
+                    @Html.DisplayFor(modelItem => item.phone)
+                </td>
                 <td class="linkler">
                     @Html.ActionLink("Edit", "Edit", new { id = item.id }, new { @class = "btn btn-warning" })
                     @Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "btn btn-danger" })
                 </td>
-
             </tr>
         }
 
     </table>
-</div>

@@ -1,0 +1,103 @@
+﻿@model IEnumerable<Library_Management_ASP.Net.Models.book>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_TestLayout.cshtml";
+}
+
+<style>
+    .linkler {
+        text-align: right;
+    }
+
+        .linkler .btn {
+            width: 100px; /* İstediğiniz genişlik değerini buradan ayarlayabilirsiniz */
+            margin-right: 10px; /* Butonlar arasında boşluk bırakmak için */
+        }
+
+    table {
+        table-layout: fixed;
+        width: 100%;
+    }
+
+    th, td {
+        width: calc(100% / 8); /* Tablonuzda üç sütun varsa */
+    }
+</style>
+
+
+<!-- ======= Breadcrumbs ======= -->
+<div class="breadcrumbs d-flex align-items-center" style="background-image: url('/UpConstruction/assets/img/hero-carousel/13.jpg');">
+    <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
+
+        <h2>BOOK</h2>
+
+    </div>
+</div><!-- End Breadcrumbs -->
+
+
+<div style="box-sizing: border-box; padding: 20px; border: 1px solid #ccc; margin: 50px auto; width: calc(62% - 40px); height: calc(100% - 40px);">
+
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+    <br />
+    <br />
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.bname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.contents)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pages)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.edition)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.author.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.category.catname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.publisher.name)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.bname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.contents)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pages)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.edition)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.author.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.category.catname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.publisher.name)
+                </td>
+                <td class="linkler">
+                    @Html.ActionLink("Edit", "Edit", new { id = item.id }, new { @class = "btn btn-warning" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

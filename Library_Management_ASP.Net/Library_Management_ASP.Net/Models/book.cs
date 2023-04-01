@@ -12,20 +12,19 @@ namespace Library_Management_ASP.Net.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class publisher
+    public partial class book
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public publisher()
-        {
-            this.books = new HashSet<book>();
-        }
-    
         public int id { get; set; }
-        public string name { get; set; }
-        public string address { get; set; }
-        public string phone { get; set; }
+        public string bname { get; set; }
+        public Nullable<int> cat_id { get; set; }
+        public Nullable<int> a_id { get; set; }
+        public Nullable<int> p_id { get; set; }
+        public string contents { get; set; }
+        public Nullable<int> pages { get; set; }
+        public string edition { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<book> books { get; set; }
+        public virtual author author { get; set; }
+        public virtual category category { get; set; }
+        public virtual publisher publisher { get; set; }
     }
 }

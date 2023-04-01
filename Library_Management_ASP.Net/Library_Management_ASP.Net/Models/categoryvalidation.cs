@@ -13,8 +13,11 @@ namespace Library_Management_ASP.Net.Models
         public class categoryMetaData
         {
             [DisplayName("Category:")]
+            [Required(ErrorMessage = "Please enter category")]
             public string catname { get; set; }
+
             [DisplayName("Status:")]
+            [Required(ErrorMessage = "Please enter status")]
             public string status { get; set; }
         }
 

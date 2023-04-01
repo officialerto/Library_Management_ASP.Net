@@ -5,9 +5,15 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="a72ce227635b4be0a076dcaa9a877b89" Name="Diagram1">
-        <EntityTypeShape EntityType="nitlibraryModel.author" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="nitlibraryModel.category" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="nitlibraryModel.publisher" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="nitlibraryModel.author" Width="1.5" PointX="5.625" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="nitlibraryModel.category" Width="1.5" PointX="4.625" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="nitlibraryModel.publisher" Width="1.5" PointX="0.5" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="nitlibraryModel.member" Width="1.5" PointX="0.5" PointY="5" />
+        <EntityTypeShape EntityType="nitlibraryModel.book" Width="1.5" PointX="2.75" PointY="3.125" />
+        <AssociationConnector Association="nitlibraryModel.FK_book_author" />
+        <AssociationConnector Association="nitlibraryModel.FK_book_category" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="nitlibraryModel.FK_book_publisher" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

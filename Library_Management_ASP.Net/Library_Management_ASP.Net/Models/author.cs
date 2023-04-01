@@ -11,16 +11,21 @@ namespace Library_Management_ASP.Net.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-
+    
     public partial class author
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public author()
+        {
+            this.books = new HashSet<book>();
+        }
+    
         public int id { get; set; }
-        [DisplayName("Name:")]
         public string name { get; set; }
-        [DisplayName("Address:")]
         public string address { get; set; }
-        [DisplayName("Phone:")]
         public string phone { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<book> books { get; set; }
     }
 }
