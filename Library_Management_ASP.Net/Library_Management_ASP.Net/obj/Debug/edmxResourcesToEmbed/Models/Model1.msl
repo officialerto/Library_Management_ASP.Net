@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="nitlibraryModelStoreContainer" CdmEntityContainer="nitlibraryEntities">
+  <EntityContainerMapping StorageEntityContainer="nitlibraryModelStoreContainer" CdmEntityContainer="nitlibraryEntities1">
     <EntitySetMapping Name="authors">
       <EntityTypeMapping TypeName="nitlibraryModel.author">
         <MappingFragment StoreEntitySet="author">
@@ -11,12 +11,36 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="books">
+      <EntityTypeMapping TypeName="nitlibraryModel.book">
+        <MappingFragment StoreEntitySet="book">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="bname" ColumnName="bname" />
+          <ScalarProperty Name="cat_id" ColumnName="cat_id" />
+          <ScalarProperty Name="a_id" ColumnName="a_id" />
+          <ScalarProperty Name="p_id" ColumnName="p_id" />
+          <ScalarProperty Name="contents" ColumnName="contents" />
+          <ScalarProperty Name="pages" ColumnName="pages" />
+          <ScalarProperty Name="edition" ColumnName="edition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="categories">
       <EntityTypeMapping TypeName="nitlibraryModel.category">
         <MappingFragment StoreEntitySet="category">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="catname" ColumnName="catname" />
           <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="members">
+      <EntityTypeMapping TypeName="nitlibraryModel.member">
+        <MappingFragment StoreEntitySet="member">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -30,26 +54,13 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="members">
-      <EntityTypeMapping TypeName="nitlibraryModel.member">
-        <MappingFragment StoreEntitySet="member">
-          <ScalarProperty Name="phone" ColumnName="phone" />
-          <ScalarProperty Name="address" ColumnName="address" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="books">
-      <EntityTypeMapping TypeName="nitlibraryModel.book">
-        <MappingFragment StoreEntitySet="book">
-          <ScalarProperty Name="edition" ColumnName="edition" />
-          <ScalarProperty Name="pages" ColumnName="pages" />
-          <ScalarProperty Name="contents" ColumnName="contents" />
-          <ScalarProperty Name="p_id" ColumnName="p_id" />
-          <ScalarProperty Name="a_id" ColumnName="a_id" />
-          <ScalarProperty Name="cat_id" ColumnName="cat_id" />
-          <ScalarProperty Name="bname" ColumnName="bname" />
+    <EntitySetMapping Name="issuebooks">
+      <EntityTypeMapping TypeName="nitlibraryModel.issuebook">
+        <MappingFragment StoreEntitySet="issuebook">
+          <ScalarProperty Name="returndate" ColumnName="returndate" />
+          <ScalarProperty Name="issuedate" ColumnName="issuedate" />
+          <ScalarProperty Name="book_id" ColumnName="book_id" />
+          <ScalarProperty Name="m_id" ColumnName="m_id" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>

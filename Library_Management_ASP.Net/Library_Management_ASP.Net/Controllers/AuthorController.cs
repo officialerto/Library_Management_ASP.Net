@@ -12,7 +12,7 @@ namespace Library_Management_ASP.Net.Controllers
 {
     public class AuthorController : Controller
     {
-        private nitlibraryEntities db = new nitlibraryEntities();
+        private nitlibraryEntities1 db = new nitlibraryEntities1();
 
         // GET: Author
         public ActionResult Index()

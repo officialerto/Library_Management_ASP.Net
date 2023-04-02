@@ -19,13 +19,13 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="bname" Type="varchar" MaxLength="50" />
-          <Property Name="cat_id" Type="int" />
-          <Property Name="a_id" Type="int" />
-          <Property Name="p_id" Type="int" />
-          <Property Name="contents" Type="varchar" MaxLength="50" />
-          <Property Name="pages" Type="int" />
-          <Property Name="edition" Type="varchar" MaxLength="50" />
+          <Property Name="bname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="cat_id" Type="int" Nullable="false" />
+          <Property Name="a_id" Type="int" Nullable="false" />
+          <Property Name="p_id" Type="int" Nullable="false" />
+          <Property Name="contents" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="pages" Type="int" Nullable="false" />
+          <Property Name="edition" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="category">
           <Key>
@@ -34,6 +34,16 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="catname" Type="varchar" MaxLength="50" />
           <Property Name="status" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="issuebook">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="m_id" Type="int" Nullable="false" />
+          <Property Name="book_id" Type="int" Nullable="false" />
+          <Property Name="issuedate" Type="date" Nullable="false" />
+          <Property Name="returndate" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="member">
           <Key>
@@ -54,7 +64,7 @@
           <Property Name="phone" Type="varchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK_book_author">
-          <End Role="author" Type="Self.author" Multiplicity="0..1" />
+          <End Role="author" Type="Self.author" Multiplicity="1" />
           <End Role="book" Type="Self.book" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="author">
@@ -66,7 +76,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_book_category">
-          <End Role="category" Type="Self.category" Multiplicity="0..1" />
+          <End Role="category" Type="Self.category" Multiplicity="1" />
           <End Role="book" Type="Self.book" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="category">
@@ -78,7 +88,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_book_publisher">
-          <End Role="publisher" Type="Self.publisher" Multiplicity="0..1" />
+          <End Role="publisher" Type="Self.publisher" Multiplicity="1" />
           <End Role="book" Type="Self.book" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="publisher">
@@ -93,6 +103,7 @@
           <EntitySet Name="author" EntityType="Self.author" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="book" EntityType="Self.book" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="category" EntityType="Self.category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="issuebook" EntityType="Self.issuebook" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="member" EntityType="Self.member" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="publisher" EntityType="Self.publisher" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_book_author" Association="Self.FK_book_author">
@@ -120,7 +131,23 @@
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="books" Relationship="nitlibraryModel.FK_book_author" FromRole="author" ToRole="book" />
+          <NavigationProperty Name="books" Relationship="Self.FK_book_author" FromRole="author" ToRole="book" />
+        </EntityType>
+        <EntityType Name="book">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cat_id" Type="Int32" Nullable="false" />
+          <Property Name="a_id" Type="Int32" Nullable="false" />
+          <Property Name="p_id" Type="Int32" Nullable="false" />
+          <Property Name="contents" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pages" Type="Int32" Nullable="false" />
+          <Property Name="edition" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="author" Relationship="Self.FK_book_author" FromRole="book" ToRole="author" />
+          <NavigationProperty Name="category" Relationship="Self.FK_book_category" FromRole="book" ToRole="category" />
+          <NavigationProperty Name="publisher" Relationship="Self.FK_book_publisher" FromRole="book" ToRole="publisher" />
         </EntityType>
         <EntityType Name="category">
           <Key>
@@ -129,37 +156,8 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="catname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="books" Relationship="nitlibraryModel.FK_book_category" FromRole="category" ToRole="book" />
+          <NavigationProperty Name="books" Relationship="Self.FK_book_category" FromRole="category" ToRole="book" />
         </EntityType>
-        <EntityType Name="publisher">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="books" Relationship="nitlibraryModel.FK_book_publisher" FromRole="publisher" ToRole="book" />
-        </EntityType>
-        <EntityContainer Name="nitlibraryEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="authors" EntityType="Self.author" />
-          <EntitySet Name="categories" EntityType="Self.category" />
-          <EntitySet Name="publishers" EntityType="Self.publisher" />
-          <EntitySet Name="members" EntityType="nitlibraryModel.member" />
-          <EntitySet Name="books" EntityType="nitlibraryModel.book" />
-          <AssociationSet Name="FK_book_author" Association="nitlibraryModel.FK_book_author">
-            <End Role="author" EntitySet="authors" />
-            <End Role="book" EntitySet="books" />
-          </AssociationSet>
-          <AssociationSet Name="FK_book_category" Association="nitlibraryModel.FK_book_category">
-            <End Role="category" EntitySet="categories" />
-            <End Role="book" EntitySet="books" />
-          </AssociationSet>
-          <AssociationSet Name="FK_book_publisher" Association="nitlibraryModel.FK_book_publisher">
-            <End Role="publisher" EntitySet="publishers" />
-            <End Role="book" EntitySet="books" />
-          </AssociationSet>
-        </EntityContainer>
         <EntityType Name="member">
           <Key>
             <PropertyRef Name="id" />
@@ -169,25 +167,19 @@
           <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="phone" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="book">
+        <EntityType Name="publisher">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="bname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="cat_id" Type="Int32" />
-          <Property Name="a_id" Type="Int32" />
-          <Property Name="p_id" Type="Int32" />
-          <Property Name="contents" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="pages" Type="Int32" />
-          <Property Name="edition" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="author" Relationship="nitlibraryModel.FK_book_author" FromRole="book" ToRole="author" />
-          <NavigationProperty Name="category" Relationship="nitlibraryModel.FK_book_category" FromRole="book" ToRole="category" />
-          <NavigationProperty Name="publisher" Relationship="nitlibraryModel.FK_book_publisher" FromRole="book" ToRole="publisher" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="books" Relationship="Self.FK_book_publisher" FromRole="publisher" ToRole="book" />
         </EntityType>
         <Association Name="FK_book_author">
-          <End Type="nitlibraryModel.author" Role="author" Multiplicity="0..1" />
-          <End Type="nitlibraryModel.book" Role="book" Multiplicity="*" />
+          <End Role="author" Type="Self.author" Multiplicity="1" />
+          <End Role="book" Type="Self.book" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="author">
               <PropertyRef Name="id" />
@@ -198,8 +190,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_book_category">
-          <End Type="nitlibraryModel.category" Role="category" Multiplicity="0..1" />
-          <End Type="nitlibraryModel.book" Role="book" Multiplicity="*" />
+          <End Role="category" Type="Self.category" Multiplicity="1" />
+          <End Role="book" Type="Self.book" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="category">
               <PropertyRef Name="id" />
@@ -210,8 +202,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_book_publisher">
-          <End Type="nitlibraryModel.publisher" Role="publisher" Multiplicity="0..1" />
-          <End Type="nitlibraryModel.book" Role="book" Multiplicity="*" />
+          <End Role="publisher" Type="Self.publisher" Multiplicity="1" />
+          <End Role="book" Type="Self.book" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="publisher">
               <PropertyRef Name="id" />
@@ -221,12 +213,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityContainer Name="nitlibraryEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="authors" EntityType="Self.author" />
+          <EntitySet Name="books" EntityType="Self.book" />
+          <EntitySet Name="categories" EntityType="Self.category" />
+          <EntitySet Name="members" EntityType="Self.member" />
+          <EntitySet Name="publishers" EntityType="Self.publisher" />
+          <AssociationSet Name="FK_book_author" Association="Self.FK_book_author">
+            <End Role="author" EntitySet="authors" />
+            <End Role="book" EntitySet="books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_book_category" Association="Self.FK_book_category">
+            <End Role="category" EntitySet="categories" />
+            <End Role="book" EntitySet="books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_book_publisher" Association="Self.FK_book_publisher">
+            <End Role="publisher" EntitySet="publishers" />
+            <End Role="book" EntitySet="books" />
+          </AssociationSet>
+          <EntitySet Name="issuebooks" EntityType="nitlibraryModel.issuebook" />
+        </EntityContainer>
+        <EntityType Name="issuebook">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="m_id" Type="Int32" Nullable="false" />
+          <Property Name="book_id" Type="Int32" Nullable="false" />
+          <Property Name="issuedate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="returndate" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="nitlibraryModelStoreContainer" CdmEntityContainer="nitlibraryEntities">
+        <EntityContainerMapping StorageEntityContainer="nitlibraryModelStoreContainer" CdmEntityContainer="nitlibraryEntities1">
           <EntitySetMapping Name="authors">
             <EntityTypeMapping TypeName="nitlibraryModel.author">
               <MappingFragment StoreEntitySet="author">
@@ -237,12 +259,36 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="books">
+            <EntityTypeMapping TypeName="nitlibraryModel.book">
+              <MappingFragment StoreEntitySet="book">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="bname" ColumnName="bname" />
+                <ScalarProperty Name="cat_id" ColumnName="cat_id" />
+                <ScalarProperty Name="a_id" ColumnName="a_id" />
+                <ScalarProperty Name="p_id" ColumnName="p_id" />
+                <ScalarProperty Name="contents" ColumnName="contents" />
+                <ScalarProperty Name="pages" ColumnName="pages" />
+                <ScalarProperty Name="edition" ColumnName="edition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="categories">
             <EntityTypeMapping TypeName="nitlibraryModel.category">
               <MappingFragment StoreEntitySet="category">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="catname" ColumnName="catname" />
                 <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="members">
+            <EntityTypeMapping TypeName="nitlibraryModel.member">
+              <MappingFragment StoreEntitySet="member">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -256,26 +302,13 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="members">
-            <EntityTypeMapping TypeName="nitlibraryModel.member">
-              <MappingFragment StoreEntitySet="member">
-                <ScalarProperty Name="phone" ColumnName="phone" />
-                <ScalarProperty Name="address" ColumnName="address" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="books">
-            <EntityTypeMapping TypeName="nitlibraryModel.book">
-              <MappingFragment StoreEntitySet="book">
-                <ScalarProperty Name="edition" ColumnName="edition" />
-                <ScalarProperty Name="pages" ColumnName="pages" />
-                <ScalarProperty Name="contents" ColumnName="contents" />
-                <ScalarProperty Name="p_id" ColumnName="p_id" />
-                <ScalarProperty Name="a_id" ColumnName="a_id" />
-                <ScalarProperty Name="cat_id" ColumnName="cat_id" />
-                <ScalarProperty Name="bname" ColumnName="bname" />
+          <EntitySetMapping Name="issuebooks">
+            <EntityTypeMapping TypeName="nitlibraryModel.issuebook">
+              <MappingFragment StoreEntitySet="issuebook">
+                <ScalarProperty Name="returndate" ColumnName="returndate" />
+                <ScalarProperty Name="issuedate" ColumnName="issuedate" />
+                <ScalarProperty Name="book_id" ColumnName="book_id" />
+                <ScalarProperty Name="m_id" ColumnName="m_id" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

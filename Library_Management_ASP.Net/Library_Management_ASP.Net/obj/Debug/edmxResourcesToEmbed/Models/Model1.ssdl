@@ -14,13 +14,13 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="bname" Type="varchar" MaxLength="50" />
-    <Property Name="cat_id" Type="int" />
-    <Property Name="a_id" Type="int" />
-    <Property Name="p_id" Type="int" />
-    <Property Name="contents" Type="varchar" MaxLength="50" />
-    <Property Name="pages" Type="int" />
-    <Property Name="edition" Type="varchar" MaxLength="50" />
+    <Property Name="bname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="cat_id" Type="int" Nullable="false" />
+    <Property Name="a_id" Type="int" Nullable="false" />
+    <Property Name="p_id" Type="int" Nullable="false" />
+    <Property Name="contents" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="pages" Type="int" Nullable="false" />
+    <Property Name="edition" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="category">
     <Key>
@@ -29,6 +29,16 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="catname" Type="varchar" MaxLength="50" />
     <Property Name="status" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="issuebook">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="m_id" Type="int" Nullable="false" />
+    <Property Name="book_id" Type="int" Nullable="false" />
+    <Property Name="issuedate" Type="date" Nullable="false" />
+    <Property Name="returndate" Type="date" Nullable="false" />
   </EntityType>
   <EntityType Name="member">
     <Key>
@@ -49,7 +59,7 @@
     <Property Name="phone" Type="varchar" MaxLength="50" />
   </EntityType>
   <Association Name="FK_book_author">
-    <End Role="author" Type="Self.author" Multiplicity="0..1" />
+    <End Role="author" Type="Self.author" Multiplicity="1" />
     <End Role="book" Type="Self.book" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="author">
@@ -61,7 +71,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_book_category">
-    <End Role="category" Type="Self.category" Multiplicity="0..1" />
+    <End Role="category" Type="Self.category" Multiplicity="1" />
     <End Role="book" Type="Self.book" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="category">
@@ -73,7 +83,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_book_publisher">
-    <End Role="publisher" Type="Self.publisher" Multiplicity="0..1" />
+    <End Role="publisher" Type="Self.publisher" Multiplicity="1" />
     <End Role="book" Type="Self.book" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="publisher">
@@ -88,6 +98,7 @@
     <EntitySet Name="author" EntityType="Self.author" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="book" EntityType="Self.book" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="category" EntityType="Self.category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="issuebook" EntityType="Self.issuebook" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="member" EntityType="Self.member" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="publisher" EntityType="Self.publisher" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_book_author" Association="Self.FK_book_author">

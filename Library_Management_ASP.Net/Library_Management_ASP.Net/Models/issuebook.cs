@@ -12,19 +12,12 @@ namespace Library_Management_ASP.Net.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class book
+    public partial class issuebook
     {
         public int id { get; set; }
-        public string bname { get; set; }
-        public int cat_id { get; set; }
-        public int a_id { get; set; }
-        public int p_id { get; set; }
-        public string contents { get; set; }
-        public int pages { get; set; }
-        public string edition { get; set; }
-    
-        public virtual author author { get; set; }
-        public virtual category category { get; set; }
-        public virtual publisher publisher { get; set; }
+        public int m_id { get; set; }
+        public int book_id { get; set; }
+        public System.DateTime issuedate { get; set; }
+        public System.DateTime returndate { get; set; }
     }
 }

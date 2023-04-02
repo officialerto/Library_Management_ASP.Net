@@ -130,6 +130,8 @@ C:\Users\Ertugrul\Documents\GitHub\Library_Management_ASP.Net\Library_Management
 C:\Users\Ertugrul\Documents\GitHub\Library_Management_ASP.Net\Library_Management_ASP.Net\Library_Management_ASP.Net\bin\roslyn\VBCSCompiler.exe
 C:\Users\Ertugrul\Documents\GitHub\Library_Management_ASP.Net\Library_Management_ASP.Net\Library_Management_ASP.Net\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\Ertugrul\Documents\GitHub\Library_Management_ASP.Net\Library_Management_ASP.Net\Library_Management_ASP.Net\bin\Antlr3.Runtime.dll
+C:\Users\Ertugrul\Documents\GitHub\Library_Management_ASP.Net\Library_Management_ASP.Net\Library_Management_ASP.Net\bin\EntityFramework.dll
+C:\Users\Ertugrul\Documents\GitHub\Library_Management_ASP.Net\Library_Management_ASP.Net\Library_Management_ASP.Net\bin\EntityFramework.SqlServer.dll
 C:\Users\Ertugrul\Documents\GitHub\Library_Management_ASP.Net\Library_Management_ASP.Net\Library_Management_ASP.Net\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\Ertugrul\Documents\GitHub\Library_Management_ASP.Net\Library_Management_ASP.Net\Library_Management_ASP.Net\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\Ertugrul\Documents\GitHub\Library_Management_ASP.Net\Library_Management_ASP.Net\Library_Management_ASP.Net\bin\Newtonsoft.Json.dll
@@ -141,6 +143,8 @@ C:\Users\Ertugrul\Documents\GitHub\Library_Management_ASP.Net\Library_Management
 C:\Users\Ertugrul\Documents\GitHub\Library_Management_ASP.Net\Library_Management_ASP.Net\Library_Management_ASP.Net\bin\System.Web.WebPages.dll
 C:\Users\Ertugrul\Documents\GitHub\Library_Management_ASP.Net\Library_Management_ASP.Net\Library_Management_ASP.Net\bin\System.Web.WebPages.Razor.dll
 C:\Users\Ertugrul\Documents\GitHub\Library_Management_ASP.Net\Library_Management_ASP.Net\Library_Management_ASP.Net\bin\WebGrease.dll
+C:\Users\Ertugrul\Documents\GitHub\Library_Management_ASP.Net\Library_Management_ASP.Net\Library_Management_ASP.Net\bin\EntityFramework.xml
+C:\Users\Ertugrul\Documents\GitHub\Library_Management_ASP.Net\Library_Management_ASP.Net\Library_Management_ASP.Net\bin\EntityFramework.SqlServer.xml
 C:\Users\Ertugrul\Documents\GitHub\Library_Management_ASP.Net\Library_Management_ASP.Net\Library_Management_ASP.Net\bin\System.Web.Helpers.xml
 C:\Users\Ertugrul\Documents\GitHub\Library_Management_ASP.Net\Library_Management_ASP.Net\Library_Management_ASP.Net\bin\System.Web.Mvc.xml
 C:\Users\Ertugrul\Documents\GitHub\Library_Management_ASP.Net\Library_Management_ASP.Net\Library_Management_ASP.Net\bin\System.Web.Optimization.xml
@@ -155,7 +159,3 @@ C:\Users\Ertugrul\Documents\GitHub\Library_Management_ASP.Net\Library_Management
 C:\Users\Ertugrul\Documents\GitHub\Library_Management_ASP.Net\Library_Management_ASP.Net\Library_Management_ASP.Net\obj\Debug\Library_Management_ASP.Net.csproj.CopyComplete
 C:\Users\Ertugrul\Documents\GitHub\Library_Management_ASP.Net\Library_Management_ASP.Net\Library_Management_ASP.Net\obj\Debug\Library_Management_ASP.Net.dll
 C:\Users\Ertugrul\Documents\GitHub\Library_Management_ASP.Net\Library_Management_ASP.Net\Library_Management_ASP.Net\obj\Debug\Library_Management_ASP.Net.pdb
-C:\Users\Ertugrul\Documents\GitHub\Library_Management_ASP.Net\Library_Management_ASP.Net\Library_Management_ASP.Net\bin\EntityFramework.dll
-C:\Users\Ertugrul\Documents\GitHub\Library_Management_ASP.Net\Library_Management_ASP.Net\Library_Management_ASP.Net\bin\EntityFramework.SqlServer.dll
-C:\Users\Ertugrul\Documents\GitHub\Library_Management_ASP.Net\Library_Management_ASP.Net\Library_Management_ASP.Net\bin\EntityFramework.xml
-C:\Users\Ertugrul\Documents\GitHub\Library_Management_ASP.Net\Library_Management_ASP.Net\Library_Management_ASP.Net\bin\EntityFramework.SqlServer.xml

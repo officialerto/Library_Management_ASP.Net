@@ -36,7 +36,8 @@
     <header id="header" class="header d-flex align-items-center" style="background-color: #282D32; position: relative ">
         <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-            <a href="#" class="logo d-flex align-items-center">
+
+            <a href="@Url.Action("Index", "Default")" class="logo d-flex align-items-center">
                 <h1>LIBRARY</h1>
             </a>
 
@@ -50,7 +51,7 @@
                     <li><a href="@Url.Action("Index", "Author")">Author</a></li>
                     <li><a href="@Url.Action("Index", "Publisher")">Publisher</a></li>
                     <li><a href="@Url.Action("Index", "Book")">Book</a></li>
-                    <li class="dropdown">
+                    @*<li class="dropdown">
                         <a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                         <ul>
                             <li><a href="#">Dropdown 1</a></li>
@@ -68,7 +69,8 @@
                             <li><a href="#">Dropdown 3</a></li>
                             <li><a href="#">Dropdown 4</a></li>
                         </ul>
-                    </li>
+                    </li>*@
+                    <li><a href="@Url.Action("Index", "IssueBook")">Issue Book</a></li>
                     <li><a href="@Url.Action("Index", "Member")">Member</a></li>
                 </ul>
             </nav><!-- .navbar -->

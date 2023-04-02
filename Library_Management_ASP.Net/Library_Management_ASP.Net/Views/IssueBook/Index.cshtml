@@ -1,0 +1,114 @@
+﻿<style>
+    .centered-button {
+        margin: 0 auto;
+        width: 250px;
+        font-size: 17px;
+        margin-bottom: 10px;
+    }
+
+    .form-control {
+        width: 400px;
+        margin-bottom: 0;
+    }
+
+    .form-horizontal {
+        margin: auto;
+        width: 50%;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: left;
+    }
+
+    .control-label {
+        padding-bottom: 7px;
+    }
+
+    .form-group {
+        margin-bottom: 0px;
+    }
+
+        .form-group .control-label {
+            width: 150px; /* veya ihtiyacınıza göre başka bir değer belirleyin */
+        }
+</style>
+
+<!-- ======= Breadcrumbs ======= -->
+<div class="breadcrumbs d-flex align-items-center" style="background-image: url('/UpConstruction/assets/img/hero-carousel/13.jpg');">
+    <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
+
+        <h2>ISSUE BOOK</h2>
+
+    </div>
+</div><!-- End Breadcrumbs -->
+
+<div style="box-sizing: border-box; padding: 5px; border: 1px solid #ccc; margin: 50px auto; width: calc(70% - 40px); height: calc(100% - 40px); text-align: center; font-weight:700">
+
+
+    @using (Html.BeginForm("Save", "IssueBook", FormMethod.Post))
+    {
+        <div class="form-horizontal">
+            <div class="form-group" style="margin-bottom: 8px; margin-top: 14px;">
+                <label style="margin-bottom: 8px;">Member ID:</label>
+                <input type="text" name="mid" placeholder="Member ID" id="mid" class="form-control" required />
+            </div>
+
+            <div class="form-group" style="margin-bottom: 8px;">
+                <label style="margin-bottom: 8px;">Member Name:</label>
+                <input type="text" name="mname" placeholder="Member Name" id="mname" class="form-control" required />
+            </div>
+
+            <div class="form-group" style="margin-bottom: 8px;">
+                <label style="margin-bottom: 8px;">Book:</label>
+                <select class="form-control" name="book" id="book">
+                    <option>Please Select</option>
+                </select>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 8px;">
+                <label style="margin-bottom: 8px;">Issue Date:</label>
+                <input type="date" name="idate" placeholder="Issue Date" id="idate" class="form-control" required />
+            </div>
+
+            <div class="form-group" style="margin-bottom: 8px;">
+                <label style="margin-bottom: 8px;">Return Date:</label>
+                <input type="date" name="rdate" placeholder="Return Date" id="rdate" class="form-control" required />
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-success btn-block centered-button" style="margin-bottom: 10px; margin-top: 15px;" required />
+                </div>
+            </div>
+
+        </div>
+    }
+    <div style="margin-bottom: 8px;">
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary btn-block centered-button" })
+    </div>
+</div>
+
+@section scripts {
+
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+
+    <script>
+
+        function getMid() {
+            $.ajax({
+                type: 'GET',
+                url: '/IssueBook/GetMid',
+                dataType: 'JSON',   
+                success: function (data) {
+
+                }
+            });
+        }
+
+    </script>
+
+}

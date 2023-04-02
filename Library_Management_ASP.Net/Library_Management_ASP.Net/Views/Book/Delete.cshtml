@@ -5,77 +5,128 @@
     Layout = "~/Views/Shared/_TestLayout.cshtml";
 }
 
-<h2>Delete</h2>
+<style>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>book</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.bname)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.bname)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.contents)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.contents)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.pages)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.pages)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.edition)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.edition)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.author.name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.author.name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.category.catname)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.category.catname)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.publisher.name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.publisher.name)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
+    .centered-button {
+        margin: 0 auto;
+        width: 250px;
+        font-size: 17px;
+        margin-bottom: 10px;
     }
-</div>
+
+    .btn btn-primary {
+        width: 250px;
+    }
+
+    .form-control {
+        width: 400px;
+        margin-bottom: 0;
+    }
+
+    .form-horizontal {
+        margin: auto;
+        width: 50%;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: left;
+    }
+
+    .control-label {
+        padding-bottom: 7px;
+    }
+
+    .form-group {
+        margin-bottom: 0px;
+    }
+</style>
+
+<!-- ======= Breadcrumbs ======= -->
+<div class="breadcrumbs d-flex align-items-center" style="background-image: url('/UpConstruction/assets/img/hero-carousel/13.jpg');">
+    <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
+
+        <h2>BOOK</h2>
+
+    </div>
+</div><!-- End Breadcrumbs -->
+
+<div style="box-sizing: border-box; padding: 5px; border: 1px solid #ccc; margin: 50px auto; width: calc(70% - 40px); height: calc(100% - 40px); text-align: center;">
+
+    <h3 style="margin-bottom: 0px; margin-top:6px;">Are You Sure You Want to Delete This?</h3>
+    <div>
+        <hr style="margin-top: 13px; margin-bottom: 13px;" />
+
+        <dl class="dl-horizontal" style="font-size: 22px; margin-bottom: 0px;">
+            <dt>
+                @Html.DisplayNameFor(model => model.bname)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.bname)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.contents)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.contents)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.pages)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.pages)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.edition)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.edition)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.author.name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.author.name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.category.catname)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.category.catname)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.publisher.name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.publisher.name)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div style=" margin-top: 0px;">
+                <input type="submit" value="Delete" class="btn btn-danger btn-block centered-button" style="margin-bottom: 10px; margin-top: 15px;" />
+            </div>
+
+            <div style="margin-bottom: 8px;">
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary btn-block centered-button" })
+            </div>
+        }
+    </div>
