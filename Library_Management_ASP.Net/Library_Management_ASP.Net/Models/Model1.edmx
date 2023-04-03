@@ -41,7 +41,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="m_id" Type="int" Nullable="false" />
-          <Property Name="book_id" Type="int" Nullable="false" />
+          <Property Name="book_id" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="issuedate" Type="date" Nullable="false" />
           <Property Name="returndate" Type="date" Nullable="false" />
         </EntityType>
@@ -62,6 +62,17 @@
           <Property Name="name" Type="varchar" MaxLength="50" />
           <Property Name="address" Type="varchar" MaxLength="50" />
           <Property Name="phone" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="returnbook">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mid" Type="int" Nullable="false" />
+          <Property Name="book" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="returndate" Type="date" Nullable="false" />
+          <Property Name="elap" Type="int" Nullable="false" />
+          <Property Name="fine" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_book_author">
           <End Role="author" Type="Self.author" Multiplicity="1" />
@@ -106,6 +117,7 @@
           <EntitySet Name="issuebook" EntityType="Self.issuebook" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="member" EntityType="Self.member" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="publisher" EntityType="Self.publisher" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="returnbook" EntityType="Self.returnbook" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_book_author" Association="Self.FK_book_author">
             <End Role="author" EntitySet="author" />
             <End Role="book" EntitySet="book" />
@@ -232,6 +244,7 @@
             <End Role="book" EntitySet="books" />
           </AssociationSet>
           <EntitySet Name="issuebooks" EntityType="nitlibraryModel.issuebook" />
+          <EntitySet Name="returnbooks" EntityType="nitlibraryModel.returnbook" />
         </EntityContainer>
         <EntityType Name="issuebook">
           <Key>
@@ -239,9 +252,20 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="m_id" Type="Int32" Nullable="false" />
-          <Property Name="book_id" Type="Int32" Nullable="false" />
+          <Property Name="book_id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="issuedate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="returndate" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="returnbook">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mid" Type="Int32" Nullable="false" />
+          <Property Name="book" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="returndate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="elap" Type="Int32" Nullable="false" />
+          <Property Name="fine" Type="Int32" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -309,6 +333,18 @@
                 <ScalarProperty Name="issuedate" ColumnName="issuedate" />
                 <ScalarProperty Name="book_id" ColumnName="book_id" />
                 <ScalarProperty Name="m_id" ColumnName="m_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="returnbooks">
+            <EntityTypeMapping TypeName="nitlibraryModel.returnbook">
+              <MappingFragment StoreEntitySet="returnbook">
+                <ScalarProperty Name="fine" ColumnName="fine" />
+                <ScalarProperty Name="elap" ColumnName="elap" />
+                <ScalarProperty Name="returndate" ColumnName="returndate" />
+                <ScalarProperty Name="book" ColumnName="book" />
+                <ScalarProperty Name="mid" ColumnName="mid" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

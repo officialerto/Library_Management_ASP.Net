@@ -65,5 +65,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="returnbooks">
+      <EntityTypeMapping TypeName="nitlibraryModel.returnbook">
+        <MappingFragment StoreEntitySet="returnbook">
+          <ScalarProperty Name="fine" ColumnName="fine" />
+          <ScalarProperty Name="elap" ColumnName="elap" />
+          <ScalarProperty Name="returndate" ColumnName="returndate" />
+          <ScalarProperty Name="book" ColumnName="book" />
+          <ScalarProperty Name="mid" ColumnName="mid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

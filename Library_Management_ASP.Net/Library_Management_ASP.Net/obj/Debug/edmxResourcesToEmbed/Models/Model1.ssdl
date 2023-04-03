@@ -36,7 +36,7 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="m_id" Type="int" Nullable="false" />
-    <Property Name="book_id" Type="int" Nullable="false" />
+    <Property Name="book_id" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="issuedate" Type="date" Nullable="false" />
     <Property Name="returndate" Type="date" Nullable="false" />
   </EntityType>
@@ -57,6 +57,17 @@
     <Property Name="name" Type="varchar" MaxLength="50" />
     <Property Name="address" Type="varchar" MaxLength="50" />
     <Property Name="phone" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="returnbook">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="mid" Type="int" Nullable="false" />
+    <Property Name="book" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="returndate" Type="date" Nullable="false" />
+    <Property Name="elap" Type="int" Nullable="false" />
+    <Property Name="fine" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="FK_book_author">
     <End Role="author" Type="Self.author" Multiplicity="1" />
@@ -101,6 +112,7 @@
     <EntitySet Name="issuebook" EntityType="Self.issuebook" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="member" EntityType="Self.member" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="publisher" EntityType="Self.publisher" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="returnbook" EntityType="Self.returnbook" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_book_author" Association="Self.FK_book_author">
       <End Role="author" EntitySet="author" />
       <End Role="book" EntitySet="book" />

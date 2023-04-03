@@ -31,5 +31,6 @@ namespace Library_Management_ASP.Net.Models
         public virtual DbSet<member> members { get; set; }
         public virtual DbSet<publisher> publishers { get; set; }
         public virtual DbSet<issuebook> issuebooks { get; set; }
+        public virtual DbSet<returnbook> returnbooks { get; set; }
     }
 }

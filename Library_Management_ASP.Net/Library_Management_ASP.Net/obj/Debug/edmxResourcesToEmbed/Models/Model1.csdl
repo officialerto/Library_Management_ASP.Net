@@ -109,6 +109,7 @@
       <End Role="book" EntitySet="books" />
     </AssociationSet>
     <EntitySet Name="issuebooks" EntityType="nitlibraryModel.issuebook" />
+    <EntitySet Name="returnbooks" EntityType="nitlibraryModel.returnbook" />
   </EntityContainer>
   <EntityType Name="issuebook">
     <Key>
@@ -116,8 +117,19 @@
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="m_id" Type="Int32" Nullable="false" />
-    <Property Name="book_id" Type="Int32" Nullable="false" />
+    <Property Name="book_id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="issuedate" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="returndate" Type="DateTime" Nullable="false" Precision="0" />
+  </EntityType>
+  <EntityType Name="returnbook">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="mid" Type="Int32" Nullable="false" />
+    <Property Name="book" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="returndate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="elap" Type="Int32" Nullable="false" />
+    <Property Name="fine" Type="Int32" Nullable="false" />
   </EntityType>
 </Schema>

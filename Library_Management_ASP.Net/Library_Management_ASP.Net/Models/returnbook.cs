@@ -12,12 +12,13 @@ namespace Library_Management_ASP.Net.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class issuebook
+    public partial class returnbook
     {
         public int id { get; set; }
-        public int m_id { get; set; }
-        public string book_id { get; set; }
-        public System.DateTime issuedate { get; set; }
+        public int mid { get; set; }
+        public string book { get; set; }
         public System.DateTime returndate { get; set; }
+        public int elap { get; set; }
+        public int fine { get; set; }
     }
 }

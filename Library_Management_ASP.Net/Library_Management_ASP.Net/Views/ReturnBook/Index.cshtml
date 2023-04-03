@@ -39,7 +39,7 @@
 <div class="breadcrumbs d-flex align-items-center" style="background-image: url('/UpConstruction/assets/img/hero-carousel/13.jpg');">
     <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
 
-        <h2>ISSUE BOOK</h2>
+        <h2>RETURN BOOK</h2>
 
     </div>
 </div><!-- End Breadcrumbs -->
@@ -47,35 +47,33 @@
 <div style="box-sizing: border-box; padding: 5px; border: 1px solid #ccc; margin: 50px auto; width: calc(70% - 40px); height: calc(100% - 40px); text-align: center; font-weight:700">
 
 
-    @using (Html.BeginForm("Save", "IssueBook", FormMethod.Post))
+    @using (Html.BeginForm("Save", "ReturnBook", FormMethod.Post))
     {
         <div class="form-horizontal">
 
             <div class="form-group" style="margin-bottom: 8px; margin-top: 14px;">
                 <label style="margin-bottom: 8px;">Member ID:</label>
-                <input type="text" name="m_id" placeholder="Member ID" id="m_id" class="form-control" required />
-            </div>
-
-            <div class="form-group" style="margin-bottom: 8px;">
-                <label style="margin-bottom: 8px;">Member Name:</label>
-                <input type="text" name="mname" placeholder="Member Name" id="mname" class="form-control" required readonly/>
+                <input type="text" name="mid" placeholder="Member ID" id="mid" class="form-control" required />
             </div>
 
             <div class="form-group" style="margin-bottom: 8px;">
                 <label style="margin-bottom: 8px;">Book:</label>
-                <select class="form-control" name="book_id" id="book_id">
-                    <option>Please Select</option>
-                </select>
-            </div>
-
-            <div class="form-group" style="margin-bottom: 8px;">
-                <label style="margin-bottom: 8px;">Issue Date:</label>
-                <input type="date" name="issuedate" placeholder="Issue Date" id="issuedate" class="form-control" required />
+                <input type="text" name="book" placeholder="Book" id="book" class="form-control" required readonly/>
             </div>
 
             <div class="form-group" style="margin-bottom: 8px;">
                 <label style="margin-bottom: 8px;">Return Date:</label>
-                <input type="date" name="returndate" placeholder="Return Date" id="returndate" class="form-control" required />
+                <input type="text" name="returndate" placeholder="Return Date" id="returndate" class="form-control" required />
+            </div>
+
+            <div class="form-group" style="margin-bottom: 8px;">
+                <label style="margin-bottom: 8px;">Days Elaps:</label>
+                <input type="text" name="elaps" placeholder="Days Elaps" id="elaps" class="form-control" required />
+            </div>
+
+            <div class="form-group" style="margin-bottom: 8px;">
+                <label style="margin-bottom: 8px;">Fine:</label>
+                <input type="text" name="fine" placeholder="Fine" id="fine" class="form-control" required />
             </div>
 
             <div class="form-group">
@@ -100,45 +98,40 @@
     <script>
 
         getMid();
-        getBooks();
 
         function getMid() {
-            $("#m_id").keyup(function (e) {
+            $("#mid").keyup(function (e) {
 
                 $.ajax({
                     type: 'POST',
-                    url: '/IssueBook/GetMid?mid=' + $("#m_id").val(),
+                    url: '/ReturnBook/GetMid?mid=' + $("#mid").val(),
                     dataType: 'JSON',
                     success: function (data) {
-                        $("#mname").val(data);
+                        console.log(data);
+
+                        $("#book").val(data[0].BookName);
+
+                        $("#returndate").val(new Date(parseInt
+                            (data[0].ReturnDate.substr(6))).toLocaleDateString());
+
+                        var elaps = data[0].ElapsedDays;
+
+                        if (elaps>0) {
+                            var fine = elaps * 100;
+                            $('#elaps').val(elaps);
+                            $('#fine').val(fine.toString());
+                        }
+
+                        else {
+                            $('#elaps').val("0");
+                            $('#fine').val("0");
+                        }
 
                     }
                 });
             });
         }
-
-        function getBooks() {
-
-            $.ajax({
-                type: 'GET',
-                url: '/IssueBook/Getbook',
-                dataType: 'JSON',
-                success: function (data) {
-                    console.log(data);
-
-                    for (var i = 0; i < data.length; i++) {
-                        $("#book_id").append($("<option/>", {
-                            text: data[i].Bname
-                        }));
-                    }
-
-                },
-                error: function (xhr, status, error) {
-                    alert(xhr.responseText);
-                }
-            });
-        }
-
+         
     </script>
 
 }
