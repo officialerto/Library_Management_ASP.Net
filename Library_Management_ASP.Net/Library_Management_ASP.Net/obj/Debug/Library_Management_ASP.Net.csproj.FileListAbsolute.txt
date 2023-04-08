@@ -159,3 +159,4 @@ C:\Users\Ertugrul\Documents\GitHub\Library_Management_ASP.Net\Library_Management
 C:\Users\Ertugrul\Documents\GitHub\Library_Management_ASP.Net\Library_Management_ASP.Net\Library_Management_ASP.Net\obj\Debug\Library_Management_ASP.Net.csproj.CopyComplete
 C:\Users\Ertugrul\Documents\GitHub\Library_Management_ASP.Net\Library_Management_ASP.Net\Library_Management_ASP.Net\obj\Debug\Library_Management_ASP.Net.dll
 C:\Users\Ertugrul\Documents\GitHub\Library_Management_ASP.Net\Library_Management_ASP.Net\Library_Management_ASP.Net\obj\Debug\Library_Management_ASP.Net.pdb
+C:\Users\Ertugrul\Documents\GitHub\Library_Management_ASP.Net\Library_Management_ASP.Net\Library_Management_ASP.Net\obj\Debug\Library_Management_ASP.Net.csproj.AssemblyReference.cache
